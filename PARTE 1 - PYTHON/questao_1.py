@@ -1,12 +1,12 @@
 # Dado o código abaixo, o que será impresso no terminal? Explique o que cada linha faz.
 
-# numeros = [1,2,3,4,5,6]
-# resultado = []
-# for n in numeros:
-#   if n % 2 == 0:
-#       resultado.append(n * 2)
+numeros = [1,2,3,4,5,6]
+resultado = []
+for n in numeros:
+   if n % 2 == 0:
+      resultado.append(n * 2)
 
-# print(resultado)
+print(resultado)
 
 # RESPOSTA: 
 # Primeiramente, o código inicia um array com os números 1,2,3,4,5,6.

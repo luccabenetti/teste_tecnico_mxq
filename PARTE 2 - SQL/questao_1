@@ -1,0 +1,42 @@
+Considere as tabelas abaixo para escrever as queries:
+
+*clientes*
+id (PK)
+nome
+cidade
+data_cadastro
+ativo (boolean)
+
+*pedidos*
+id (PK)
+cliente_id (FK -> clientes.id)
+valor
+data_pedido
+status ('pendente','pago','cancelado')
+
+a. Listar o nome de todos os clientes ativos que fizeram pelo menos um pedido com status 'pago'.
+
+*RESPOSTA*:
+SELECT DISTINCT c.*     # Seleciona todos os valores e remove os duplicados da consulta
+FROM clientes c     # Busca indicar de qual tabela os dados serão buscados
+JOIN pedidos p ON p.cliente_id = c.id       # Relaciona a tabela de pedidos com a de clientes, a partir da chave primária do id de cliente
+WHERE c.ativo = true        # Onde todos os clientes estejam ativos
+  AND p.status = 'pago';    # E que possuem o status do pedido como 'pago'
+
+b. Retornar o valor total gasto por cada cidade, considerando apenas pedidos com status 'pago'. Ordenar do maior para o menor.
+
+*RESPOSTA*:
+SELECT c.cidade, SUM(p.valor) AS total_gasto    # Busca as cidades da tabela clientes e soma os valores da tabela de pedidos e depois ordenar pelo alias total_gasto
+FROM clientes c     # Busca indicar de qual tabela os dados serão buscados principalmente
+JOIN pedidos p ON p.cliente_id = c.id   # Relaciona a tabela de pedidos com a tabela de clientes, a partir da identificação do id do cliente
+WHERE p.status = 'pago'     # Onde o status de pedidos for 'pago'
+GROUP BY c.cidade       # Agrupa pelas cidades da tabela de clientes
+ORDER BY total_gasto DESC;      # Com isso, ordena o total gasto por cada cidade que tiveram o status 'pago'
+
+c. Encontrar clientes que nunca fizeram nenhum pedido.
+
+*RESPOSTA*:
+SELECT DISTINCT c.*      # Seleciona todas as colunas da tabela de clientes a partir do alias c de clientes removendo os duplicados
+FROM clientes c     # Busca indicar de qual tabela os dados serão buscados principalmente
+LEFT JOIN pedidos p ON p.cliente_id = c.id      # Relaciona a tabela de pedidos com a tabela de clientes, a partir da identificação do id do cliente
+WHERE p.id IS NULL;     # Onde o id do pedido for igual a NULL, irá ser retornado todos os clientes que não fizeram nenhum pedido
