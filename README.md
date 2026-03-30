@@ -8,7 +8,7 @@ Este repositório contém as soluções desenvolvidas para o desafio técnico ap
 - Bibliotecas: requests e datetime
 Obs: A biblioteca datetime é nativa do Python.
 
-A biblioteca requests é necessário utilizar o comando:
+A biblioteca requests é necessário utilizar o comando a seguir para sua utilização:
 - pip install requests
 
 ## Código
