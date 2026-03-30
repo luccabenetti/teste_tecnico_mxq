@@ -1,4 +1,4 @@
-# Readme - Documentação de Arquivos
+# Desafio Técnico MXQ - Documentação de Arquivo
 
 # Documentação do Projeto
 Este repositório contém as soluções desenvolvidas para o desafio técnico aplicado pela MXQ Insight, estruturado em três partes que abordam questões na linguagem Python, consultas SQL e consumo de API externa.
